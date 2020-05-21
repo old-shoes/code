@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var each = function(arr,callback){
+      for(var i = 0,l = arr.length;i<l;i++){
+        callback.call(arr[i],i,arr[i])
+      }
+    }
+    each([7,8,9],function(i,n){
+      console.log([i,n])
+    })
+
+  </script>
+</body>
+</html>

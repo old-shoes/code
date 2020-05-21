@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="add">按钮:add</div>
+  <script>
+    var add=document.getElementById('add')
+    var setBtnFn = function(btn,fn){
+      btn.onclick = function(){fn.start()}
+    }
+    var addObj = {
+      handle:function(){
+        console.log('添加');
+      }
+    }
+    var addFn = function(receiver){
+      this.receiver=receiver
+    }
+    addFn.prototype.start = function(){
+      this.receiver.handle()
+    }
+    var newAddFn = new addFn(addObj);
+    setBtnFn(add,newAddFn)
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 发布-订阅
+    var sales = function (){};
+    sales.clientList={};
+    sales.listen = function(name,callback){
+      if(!this.clientList[name]){
+        this.clientList[name]=[]
+      }
+      this.clientList[name].push(name)
+    }
+    sales.trigger = function(){
+      var name = Array.prototype.shift.call(arguments)
+      var fns = this.clientList[name]
+      if(!fns||fns.length===0){
+        return false
+      }
+      for(var i = 0 ,l = fns.length , fn ;fn=fns[i++];){
+        fn.apply(this,arugment)
+      }
+    }
+  </script>
+</body>
+</html>

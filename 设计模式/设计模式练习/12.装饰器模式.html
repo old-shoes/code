@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="button"></button>
+</body>
+<script>
+  Function.prototype.before = function(brforefn){
+    var __self = this;
+    return function(){
+      brforefn.apply(this,arguments);
+      return __self.apply(this,arguments);
+    }
+  }
+  document.getElementById = document.getElementById.before(function(){
+    alert(1);
+  })
+  var button = document.getElementById('button');
+  console.log(button);
+
+</script>
+</html>

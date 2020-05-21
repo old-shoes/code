@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var CreateDiv = (function (){
+      var instance;
+      var CreateDiv = function(html){
+        if(instance){
+          return instance
+        }
+        this.html = html
+        this.init();
+        return instance = this
+      }
+      CreateDiv.prototype.init = function(){
+        console.log('初始化' + this.html)
+      }
+      return CreateDiv
+    })()
+    new CreateDiv('aa')
+    new CreateDiv('bb')
+    new CreateDiv('cc')
+    new CreateDiv('dd')
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Login(data={}){
+      this.fn=null;
+      this.name=data.name;
+    }
+    Login.prototype.success = function(){ 
+      // 属于原型对象
+      console.log("登录成功"+this.name)
+    }
+    Login.setOnly = function(data){ 
+      //  挂静态方法 挂静态方法 每次实例都会调用一次
+      if(!this.fn){
+        this.fn = new Login(data)
+      }
+      return this.fn
+    }
+    var aaa=Login.setOnly({name:"我的主要账号"})
+    var bbb=Login.setOnly({name:"我的子账号"})
+    aaa.success();
+    bbb.success();
+    console.log(Login)
+  </script>
+</body>
+</html>

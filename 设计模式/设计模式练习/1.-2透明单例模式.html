@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var CreatDiv = (function(){
+      var instance;
+      var CreatDiv = function (html){
+        if(instance){
+          return instance ;
+        }
+        this.html = html;
+        this.init();
+        return instance = this;
+      }
+      CreatDiv.prototype.init = function(){
+        var div = document.createElement("div");
+        div.innerHTML=this.html
+        document.body.appendChild(div);
+      }
+      return CreatDiv;
+    })();
+    var aa=new CreatDiv("aaa")
+    var bb=new CreatDiv("bb")
+    var cc=new CreatDiv("cc")
+    var dd=new CreatDiv("dd")
+    var ee=new CreatDiv("ee")
+
+  </script>
+</body>
+</html>
