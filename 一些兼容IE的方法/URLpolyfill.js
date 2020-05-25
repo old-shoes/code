@@ -1,4 +1,4 @@
-  var URL=URL||function(str){
+  var URL=URL()||function(str){
     let output={};
     var RegExpObj={
       hash: /.+?(#.+$)/,
@@ -26,3 +26,4 @@
     RegExpObj['href']=str
     return output; 
   }
+  export default URL
