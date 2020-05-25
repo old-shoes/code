@@ -22,7 +22,6 @@ var URLpolyfill = function(str) {
     search: /.+?(\?.+$)/,
     username: ""
   }
-  console.log('hhh')
   var URLList = ['hash', 'host', 'hostname', 'origin', 'pathname', 'port', 'protocol', 'search']
   var RexExpHandle = function(patternReg) {
     var pattern = patternReg
