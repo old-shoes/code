@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URLpolyfill</title>
+</head>
+<body>
+  
+</body>
+<script>
+  var URLpolyfill=function(str){
+    if(new URL(str)){
+      return new URL(str);
+    }
+    let output={};
+    var RegExpObj={
+      hash: /.+?(#.+$)/,
+      host: /\w+:\/\/(\S+?)\//,
+      hostname: "/\w+:\/\/([^/:]+)/",
+      href: "http://localhost:8084/tag/getTags?agentId=1107",
+      origin: " /(\w+:\/\/\S+?)\//",
+      password: "",
+      pathname: "/\w+:\/\/\S+?\/(.*)[\?.*]/",
+      port: /\w+:\/\/[^/:]+:?(\d*)?/,
+      protocol: /(\w+:)\/\//,
+      search:  /.+?(\?.+$)/,
+      username: ""
+    }
+    console.log('hhh')
+    var URLList=['hash','host','hostname','origin','pathname','port','protocol','search']
+    var RexExpHandle=function(patternReg){
+      var pattern=patternReg
+      var arr = str.match(pattern);
+      var outputstr=arr&&arr[1]?arr[1]:"";
+      return outputstr
+    }
+    for(let i=0,len=URLList.length;i<len;i++){
+      output[URLList[i]]=RexExpHandle(RegExpObj[URLList[i]])
+    }
+    RegExpObj['href']=str
+    return output; 
+  }
+
+  //http://www.runoob.com:80/html/html-tutorial.html
+  // http://localhost:8084/#/tag/getTags?agentId=1107
+  // http://localhost:8080/html/html-tutorial.html?asd=123
+  console.log(new URLpolyfill("https://localhost:8084/#/tag/getTags?agentId=1107"))
+  // \w:\/\/\w*:\d*\/\w*\?\w*
+</script>
+</html>
